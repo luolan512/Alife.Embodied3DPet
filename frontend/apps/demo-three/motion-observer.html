@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>动作观察</title></head><body>
+<main><header><div><p class="eyebrow">ARDY · 本地动作反馈</p><h1>实际动作是否仍符合目标</h1></div><label><input id="enabled" type="checkbox">启用观察</label></header>
+<p id="status" role="status">正在连接…</p><p id="target">等待实际播放目标</p>
+<section id="generation-controls"><h2>动作生成配置与耗时</h2>
+<div class="actions"><label>历史长度（帧）<input id="history-frames" type="number" min="0" max="160" step="4"></label>
+<label>去噪步数<input id="denoising-steps" type="number" min="1" max="10" step="1"></label>
+<button id="apply-generation" disabled>应用生成参数</button></div>
+<p class="hint">20fps：4帧历史≈0.2秒，16帧≈0.8秒。保存后下一次生成生效。</p>
+<output id="generation-settings-status"></output><p id="generation-timing">尚无生成耗时</p>
+<p><a href="/pet.html" target="_blank">打开角色控制页面</a> · <a href="/" target="_blank">完整生成设置</a></p></section>
+<p class="hint">只观察，不自动停止或修复。相似度不是成功率；“未发现偏离”不等于动作已经完成。</p>
+<canvas id="chart" height="220" aria-label="最终播放骨架与目标的相似度趋势"></canvas>
+<div class="legend">最终播放骨架：<span class="w2">2 秒</span> · <span class="w4">4 秒</span> · <span class="w8">8 秒</span>窗口；纵轴为 cosine −1 到 1。</div>
+<section><h2>三路动作对照</h2><div class="table-wrap"><table><thead><tr><th>观察阶段</th><th>窗口</th><th>目标相似度</th><th>参考下降</th><th>最近候选</th><th>判断</th></tr></thead><tbody id="scores"></tbody></table></div></section>
+<section><h2>几何观察</h2><div id="geometry">等待骨架数据</div><p class="hint">手臂交叠使用简化躯干代理；高度变化和速度突变是观察信号，正常运动也可能触发。</p></section>
+<section><h2>标注这一刻</h2><p class="hint">用真实体验校准并比较检测时间。确认正常参考会更新当前目标的相似度基线；换目标后重新建立。</p><div class="actions"><button data-mark="baseline_good">确认当前动作正常，设为参考</button><button data-mark="drift_start">标记开始跑偏</button><button data-mark="normal">标记正常</button></div><output id="annotation"></output></section>
+<details><summary>最近事件和运行信息</summary><pre id="details"></pre></details></main><script type="module" src="/src/motion-observer.ts"></script></body></html>

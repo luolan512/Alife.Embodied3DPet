@@ -1,0 +1,47 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Character Agent · 小小房间</title></head><body>
+<div id="app"><header><div class="brand"><span class="brand-mark">◇</span><div><strong>小小房间</strong><small>CHARACTER AGENT · LIVE MOTION</small></div></div><div class="header-actions"><span id="connection" class="status">连接中</span><button id="settings-toggle" class="quiet">接口设置</button></div></header>
+<main><section class="studio"><div class="studio-top"><div><span class="eyebrow">YOUR COMPANION</span><h1>让对话成为她的动作。</h1><p>真实 ARDY 身体运动 · VRM 表情 · 自主行为</p></div><span class="pill">3D 房间</span></div>
+<div id="viewport"><div id="loading" class="loading">正在加载角色…</div></div><div class="scene-caption"><span>拖动旋转视角 · 滚轮缩放</span><span id="fps">— FPS</span></div>
+<div class="transport"><button id="camera-full" type="button">1 · 正视复位</button><button id="camera-face" type="button">2 · 正脸半身</button><button id="camera-eye" type="button">3 · 角色视角</button><span id="spatial-status">世界：北 −Z / 南 +Z / 东 +X / 西 −X</span></div>
+<div class="transport"><label>镜头注视 <select id="camera-gaze" disabled title="身体与头部姿态由 ARDY 控制"><option value="auto">AI 自主（默认自由视线）</option><option value="off">禁止持续盯镜头</option><option value="follow">默认跟随镜头</option></select></label><button id="recenter" type="button">复位场地位置</button><span>身体与头部姿态由 ARDY 控制；不叠加呼吸或程序注视。</span></div><div class="model-bar"><div><span class="field-label">角色</span><select id="model-select"></select></div><label class="file-button">导入 VRM<input id="model-file" type="file" accept=".vrm" hidden></label><span id="model-info"></span><label class="check-label"><input id="skeleton-debug" type="checkbox"> 左右标记 / 源骨架</label></div>
+<div class="action-bar"><span id="backend-status">运动模型正在准备</span><button id="stop" class="quiet">立即停止</button></div></section>
+<aside class="chat-panel"><div class="chat-heading"><div><span class="eyebrow">CONVERSATION</span><h2>聊一会儿</h2></div><div><button id="new-conversation" type="button" title="归档旧记录，清除对话与行动记忆并暂停身体；保留接口配置和日志">新对话</button><span class="mode-badge">真实 LLM</span></div></div><div class="mode-note">她会自行安排动作与表情。首次新动作编码可能较慢，当前动作继续播放。</div><label class="field-label">对话记录<select id="conversation-archive" style="width:100%"><option value="">当前对话</option></select></label><div id="messages" role="log" aria-live="polite"></div>
+<div class="suggestions"><button data-prompt="你好，像个开心的女孩一样向我打个招呼。">打个招呼</button><button data-prompt="你今天心情怎么样？用你自己的动作表达一下。">今天心情</button><button data-prompt="优雅地跳一小段舞，然后站着陪我聊天。">跳一小段舞</button></div>
+<form id="chat-form"><textarea id="message" placeholder="对她说点什么…" rows="2" maxlength="4000"></textarea><div class="composer-footer"><span id="turn-status">准备中</span><button id="send" type="submit" disabled>发送 ↗</button></div></form>
+<p id="context-status" class="fine-print">上下文：最近四轮 + 最多800字符摘要；完整记录只保存在本地。</p><details class="event-panel"><summary>当前行为与反馈</summary><pre id="state"></pre></details></aside></main>
+<section class="workbench"><div class="workbench-heading"><h2>运动工作台</h2><span id="actor-state">位置 —</span><span id="runtime-status">准备中</span></div>
+<div class="transport"><button id="body-start" type="button">启动身体循环</button><button id="body-disable" type="button">关闭自主决策</button><span id="body-status">身体循环等待中</span></div>
+<details class="control-panel" open><summary>视觉观察 · 低频理解</summary>
+<div class="transport"><label><input id="vision-enabled" type="checkbox"> 视觉总开关（图片发送到当前接口）</label>
+<label><input id="vision-active" type="checkbox" checked> 主模型主动看</label><label><input id="vision-background" type="checkbox" checked> 低频后台视觉摘要</label>
+<label>观察相机 <select id="vision-source"><option value="eye">角色眼位</option><option value="viewport">用户视角</option></select></label>
+<button id="vision-observe" type="button">让角色主动观察</button><button id="vision-force" type="button">强制更新后台观察</button></div>
+<div class="transport"><label>变化触发最短间隔 / 秒 <input id="vision-min" type="number" min="3" max="300" value="45"></label>
+<label>无变化最长间隔 / 秒 <input id="vision-max" type="number" min="10" max="600" value="180"></label><button id="vision-apply" type="button">应用视觉参数</button></div>
+<p class="workbench-note">场景相机每秒采样 2 次；主动看与后台摘要可同时启用，共用 PerceptionScheduler，主动请求优先。FORCE_OBSERVE 可提前更新，但不会绕过总开关。下面的间隔控制后台摘要。只采集 3D 场景，不采集桌面、聊天面板或现实摄像头。主对话读取结构化观察，不累积截图。</p>
+<p id="vision-status"></p><img id="vision-preview" alt="最近采样画面" style="width:256px;max-width:100%;border-radius:8px"><p id="vision-result"></p></details>
+<p id="usage-status" class="workbench-note">Token 用量将在接口返回 usage 后显示；运行日志自动保存到本地。</p>
+<div class="transport"><button id="play">▶ 播放</button><button id="pause">Ⅱ 暂停</button><button id="prev-frame">−1 帧</button><button id="next-frame">+1 帧</button><label>速度 <select id="play-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><span id="frame-label">0 / 0 · 20 FPS</span></div>
+<canvas id="timeline" height="64" aria-label="动作时间轴"></canvas><input id="scrubber" type="range" min="0" max="0" value="0" aria-label="播放帧"><p class="workbench-note">紫色：动作计划；绿色：已生成缓冲；竖线：当前播放帧。拖动会暂停并取消当前 AI 计划；仅可回看内存保留的帧。</p>
+<div class="workbench-grid"><details class="control-panel" open><summary>ARDY 生成参数</summary><form id="motion-settings"><div class="parameter-grid">
+<label>Horizon <select id="motion-model"><option value="core40">Core40 · 40 帧 / 2 秒</option><option value="core8">Core8 · 8 帧 / 0.4 秒</option></select></label>
+<label>推理后端 <select id="inference-backend"><option value="trt-fp16">官方 TensorRT FP16（未就绪自动回退）</option><option value="none">普通 PyTorch</option><option value="torch-compile">torch.compile（需要预编译）</option></select></label>
+<label><input type="checkbox" id="official-postprocess">官方脚部接触后处理（实验，可关闭）</label>
+<label>Denoising Steps<input id="denoising_steps" type="number" min="1" max="10"></label>
+<label>History Crop Length（帧）<input id="history_frames" type="number" min="0" max="160" step="4"></label>
+<label>Replan Buffer（帧）<input id="replan_buffer_frames" type="number" min="0" max="100"></label>
+<label>Replan Trigger Thresh（帧）<input id="trigger_frames" type="number" min="4" max="100"></label>
+<label>动作切换最小提前量（帧）<input id="transition_lead_frames" type="number" min="4" max="100"></label>
+<label>CFG Text Weight<input id="cfg_text" type="number" min="0" max="10" step="0.1"></label>
+<label>CFG Constraint Weight<input id="cfg_constraint" type="number" min="0" max="10" step="0.1"></label>
+<label>Seed<input id="seed" type="number" min="0" max="2147483647"></label>
+
+<label>Text Encoder<input disabled value="CPU Kimodo GGUF · Q4_K"></label>
+<label>Future Crop Length<input disabled value="未启用空间约束，不适用"></label>
+</div><label class="check-label"><input id="auto_replan" type="checkbox"> 自动续生成（默认关闭）</label><label class="check-label"><input id="startup_default_prompt" type="checkbox"> 启动默认站立提示词（默认关闭，下次启动生效）</label><label class="check-label"><input id="restart_from_now" type="checkbox"> 切换动作时从当前帧重新生成（Restart From Now，默认关闭）</label><p class="workbench-note">开启后：丢弃当前帧之后的旧动作，保持当前姿态等待新动作生成；保留历史，不是清空历史重新开始。适用于手动测试与 AI 动作切换。</p><button type="submit">应用生成参数</button><span id="motion-config-status"></span></form>
+<p class="workbench-note">20 帧 = 1 秒。History 向下对齐到 4 帧；Buffer 是续生成的未来锚点；Trigger 是剩余多少帧开始续生成。切换提前量还会根据推理耗时自动增大。Steps 越多越慢，最大 10。CFG Constraint 在无空间约束时不生效。换 Horizon 会取消计划并重载模型。暂未接入 TensorRT / torch.compile 和关键帧 Constraints 编辑器。</p>
+<form id="motion-test"><label>直接动作测试（绕过 LLM）<textarea id="motion-prompt" rows="2">A person waves with their right hand.</textarea></label><label>计划时长（秒）<input id="motion-duration" type="number" min="0.5" max="30" value="4" step="0.5"></label><button type="submit">生成并播放</button></form></details>
+<details class="control-panel" open><summary>调试与分阶段耗时</summary><div id="latency" class="latency-grid"></div><p id="debug-stage"></p><p class="workbench-note">ARDY 推理不含文本编码。首次动作编码单独保留，不被后续待机覆盖；CPU 编码新描述可能需数秒至数十秒，缓存命中会跳过。回复出现和身体开始切换是两个时刻。直接动作测试会清空上一轮 LLM 耗时。</p><button id="export-debug" type="button">导出调试 JSON</button><details><summary>详细状态 / 骨骼映射 / 事件</summary><pre id="debug-details"></pre></details></details></div>
+</section><footer><span>文字对话与记录 · 持续身体动作 · 独立角色架构</span></footer></div>
+<dialog id="settings"><form id="settings-form"><div class="dialog-heading"><h2>OpenAI 兼容接口</h2><button id="settings-close" class="quiet" type="button">关闭</button></div><label>Base URL<input id="base-url" placeholder="https://供应商/v1" required></label><label>模型 ID<input id="model" required></label><label>API Key<input id="api-key" type="password" placeholder="留空保留已有密钥" autocomplete="off"></label><label><input id="auto" type="checkbox"> 自主身体决策（无人对话时也运行）</label><label><input id="thinking-enabled" type="checkbox"> DeepSeek 思考模式（默认关闭，启用会增加延迟和输出用量）</label><label>动作期间决策间隔 / 秒<input id="body-interval" type="number" min="6" max="300" value="20"></label><label>待机决策间隔 / 秒<input id="idle-interval" type="number" min="6" max="300" value="45"></label><label><input id="json-mode" type="checkbox"> 供应商支持时启用 JSON mode</label><p class="fine-print">配置保存在本机，密钥不返回浏览器。对话保存在本机数据库。暂未接入语音、Audio2Face 与物体操作。</p><p id="settings-error" class="error"></p><button type="submit">保存</button></form></dialog>
+<div id="toast" role="status" hidden></div><script type="module" src="/src/main.ts"></script></body></html>

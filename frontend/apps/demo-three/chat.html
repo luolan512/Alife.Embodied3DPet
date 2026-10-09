@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>小小伙伴 · 聊天</title></head><body>
+<header id="drag"><div><strong>小小伙伴</strong><small id="provider">对话与动作</small></div><button id="close" title="隐藏聊天窗口">×</button></header>
+<nav><button id="auto">开始 AI 自动规划</button><button id="stop">停止运动</button><button id="reset">强制复原</button><button id="new">新对话</button><button id="persona-open" disabled>角色设定</button></nav>
+<section id="persona-panel" hidden role="dialog" aria-labelledby="persona-title"><div class="persona-heading"><strong id="persona-title">角色身份与性格</strong><button id="persona-close" type="button">关闭</button></div>
+<label><input id="persona-enabled" type="checkbox" checked>用于聊天回复和 AI 自主行为</label>
+<textarea id="persona-prompt" rows="8" maxlength="2000" aria-label="角色系统提示词"></textarea>
+<p>描述她是谁、怎么说话、偏好什么行为。保存后，下次回复与自主规划生效；不会立即打断当前动作。</p>
+<div class="persona-actions"><button id="persona-save" type="button">保存角色设定</button><button id="persona-default" type="button">填入默认示例</button><small id="persona-count"></small></div><output id="persona-status" aria-live="polite"></output></section>
+<div id="chat-layout"><aside id="progress" aria-label="实时动作计划"><h2>动作计划</h2><p id="progress-mode">等待计划</p><div id="plan-list"></div><small>进度按播放帧计算，姿态完成未验证。</small></aside><main id="dialogue"><div id="messages" role="log"></div><div id="phase">正在连接…</div>
+<details id="plan"><summary>实际执行参数</summary><pre id="plan-text">等待动作</pre></details>
+<details><summary>可选：动作观察与标注（默认关闭）</summary><div id="motion-feedback" aria-live="polite">动作观察：等待播放</div><a href="/motion-observer.html" target="_blank" rel="noopener">查看动作观察与标注</a></details>
+<form id="send"><textarea id="message" rows="2" placeholder="和她说话，也可以要求动作…"></textarea><button id="submit">发送</button></form></main></div>
+<script type="module" src="/src/chat.ts"></script></body></html>

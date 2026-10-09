@@ -1,0 +1,23 @@
+{
+  "description": "Observed versions in the tested isolated environment; not an automatic pip installation recipe. CUDA/TensorRT must use a matched distribution.",
+  "python": "3.10",
+  "packages": {
+    "torch": "2.7.0+cu126",
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "PyYAML": "6.0.3",
+    "einops": "0.8.2",
+    "einx": "0.4.3",
+    "hydra-core": "1.3.7",
+    "omegaconf": "2.3.1",
+    "safetensors": "0.8.0",
+    "vector-quantize-pytorch": "1.25.2",
+    "transformers": "5.8.1",
+    "httpx": "0.28.1",
+    "websockets": "15.0.1",
+    "pydantic": "2.13.5",
+    "psutil": "7.2.2",
+    "huggingface-hub": "1.33.0",
+    "peft": "0.21.2"
+  }
+}

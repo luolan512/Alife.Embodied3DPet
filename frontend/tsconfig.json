@@ -1,0 +1,1 @@
+{"compilerOptions":{"target":"ES2022","module":"ESNext","moduleResolution":"Bundler","lib":["ES2022","DOM","DOM.Iterable"],"types":["node"],"strict":true,"skipLibCheck":true,"noEmit":true,"esModuleInterop":true,"paths":{"@pet-emotion":["../emotionAdapter/index.ts"]}},"include":["apps/**/*.ts","adapters/**/*.ts","packages/**/*.ts","vite.config.ts"]}

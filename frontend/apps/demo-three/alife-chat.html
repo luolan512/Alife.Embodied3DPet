@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>具身3D桌宠 · 对话</title></head><body>
+<header id="drag"><div><strong>具身3D桌宠</strong><small>对话 · 表情 · 身体计划</small></div><button id="close" title="关闭聊天窗口" aria-label="关闭聊天窗口">×</button></header>
+<nav><button id="continue">继续动作</button><button id="pause">暂停动作</button><button id="stop">停止任务</button><button id="settings-toggle">动作参数</button><small id="connection">连接中…</small></nav>
+<div id="chat-layout"><aside id="progress" aria-label="实时身体计划"><h2>身体计划</h2><p id="progress-mode">等待计划</p><div id="plan-list"></div><small>进度表示实际播放；姿态是否符合意图仍需确认。</small></aside>
+<main id="dialogue"><div id="messages" role="log"></div><div id="phase">正在连接身体…</div>
+<details id="plan"><summary>实际执行参数</summary><pre id="plan-text">等待身体反馈</pre></details>
+<details id="generation-panel"><summary>动作生成参数</summary><div class="generation-grid">
+<label>历史长度（帧，20 fps）<input id="history-frames" type="number" min="0" max="200" step="1" value="16"></label><label>去噪步数<input id="denoising-steps" type="number" min="1" max="10" step="1" value="10"></label>
+<label>推理后端<select id="inference-backend"><option value="none">PyTorch</option><option value="trt-fp16">TensorRT FP16</option><option value="torch-compile">Torch Compile</option></select></label><button id="apply-generation">应用生成参数</button>
+<label>动作文本编码<select id="text-encoder-mode"><option value="cpu">CPU</option><option value="vulkan-stream">Vulkan GPU 分块</option><option value="vulkan-resident">Vulkan GPU 全模型常驻</option></select></label><label>GPU 分块层数<input id="text-encoder-chunk" type="number" min="1" max="8" value="2"></label><button id="text-encoder-save">保存编码方式</button><p id="settings-status">与 Alife 配置及桌宠右键配置同步；编码方式在重新启用模块后生效。</p></div></details>
+<form id="send"><textarea id="message" rows="2" placeholder="和我说说话，也可以安排身体动作…" maxlength="2000" aria-label="对话消息"></textarea><button id="submit">发送</button></form></main></div>
+<script type="module" src="/src/alife-chat.ts"></script></body></html>

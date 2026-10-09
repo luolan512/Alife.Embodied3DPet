@@ -1,0 +1,23 @@
+<details open id="face-controls"><summary>表情与说话</summary>
+<label class="check"><input id="face-enabled" type="checkbox" checked>启用 AI 表情</label>
+<label class="check"><input id="face-continuous" type="checkbox" checked>回复后持续表情变化</label>
+<label class="check"><input id="face-guidance" type="checkbox" checked>按 AI 情绪控制局部表情</label>
+<label class="check"><input id="eye-micro" type="checkbox" checked>眼球微动（微小颤动）</label>
+<label class="check"><input id="speech-bubble" type="checkbox">头顶消息气泡（全屏模式不显示）</label>
+<label>表情幅度<input id="face-gain" type="range" min="0" max="1.5" step="0.05" value="1"></label>
+<label>表情播放速度<input id="face-speed" type="range" min="0.5" max="3" step="0.1" value="1.5"></label>
+<label>说话嘴型频率<input id="face-speech-rate" type="range" min="2" max="7" step="0.1" value="3.8"></label>
+<div class="row"><button id="face-close-mouth">立即收口</button><button id="face-reset">清空情绪</button></div>
+<p>从圆形菜单打开聊天，AI 会同时安排回复、情绪和回复后的动作。无语音时使用模拟嘴型，结束后保留情绪。</p>
+<output id="face-status">等待表情状态</output><p id="face-timing"></p>
+<details><summary>手动调整情绪</summary>
+<label>情绪<select id="face-emotion"><option value="happy">开心</option><option value="sad">难过</option><option value="angry">生气</option><option value="relaxed">放松</option><option value="neutral">平静</option></select></label>
+<label>愉悦度<input id="face-valence" type="range" min="-1" max="1" step="0.05" value="0.65"></label>
+<label>兴奋度<input id="face-arousal" type="range" min="-1" max="1" step="0.05" value="0.3"></label>
+<label>自信度<input id="face-dominance" type="range" min="-1" max="1" step="0.05" value="0.2"></label>
+<label>强度<input id="face-intensity" type="range" min="0" max="1" step="0.05" value="0.8"></label>
+<label>保持秒数<input id="face-hold_s" type="number" min="0" max="120" value="8"></label>
+<label>衰减秒数<input id="face-decay_s" type="number" min="2" max="300" value="45"></label>
+<button id="face-apply">应用情绪</button></details>
+<details><summary>表情诊断</summary><pre id="face-diagnostics"></pre></details>
+</details>

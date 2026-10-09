@@ -1,0 +1,7 @@
+Alife.Embodied3DPet
+Copyright 2026 luolan512 and contributors.
+
+Contains ARDY sources, copyright NVIDIA CORPORATION & AFFILIATES.
+See runtime/ardy/LICENSE and runtime/ardy/ATTRIBUTIONS.MD.
+Local plugin integration and runtime adaptations differ from upstream ARDY.
+Third-party dependencies and models retain their respective licenses.

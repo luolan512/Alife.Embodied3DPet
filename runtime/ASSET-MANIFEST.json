@@ -1,0 +1,371 @@
+{
+  "format": 1,
+  "date": "2026-10-09",
+  "assets": [
+    {
+      "path": "models/ardy/ARDY-Core-RP-20FPS-Horizon40/.gitattributes",
+      "bytes": 1519,
+      "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361"
+    },
+    {
+      "path": "models/ardy/ARDY-Core-RP-20FPS-Horizon40/config.yaml",
+      "bytes": 1560,
+      "sha256": "d8999e5c1f045a91f706fb2d5c9f2eea530af5560c1bc859d0d6257394eadd7e"
+    },
+    {
+      "path": "models/ardy/ARDY-Core-RP-20FPS-Horizon40/denoiser.safetensors",
+      "bytes": 623324336,
+      "sha256": "1019d0bf269cf8d1b3e3e9b4a384a58c112672959b071279ddb65814d77660cd"
+    },
+    {
+      "path": "models/ardy/ARDY-Core-RP-20FPS-Horizon40/LICENSE",
+      "bytes": 10229,
+      "sha256": "11ccdcb47db87ac30b63765b5e5154403026c4fbb52c19919d99d912ec454e19"
+    },
+    {
+      "path": "models/ardy/ARDY-Core-RP-20FPS-Horizon40/README.md",
+      "bytes": 13081,
+      "sha256": "e3793c1c7a85dd6cc2c1008a58bed6024f1bd0eda55982a14f4b186ed80514e2"
+    },
+    {
+      "path": "models/ardy/ARDY-Core-RP-20FPS-Horizon40/tokenizer.safetensors",
+      "bytes": 141746112,
+      "sha256": "58a887e299a3a6779b5b4ff361b452c4349d45b513b5957f2a961d393623abcd"
+    },
+    {
+      "path": "models/ardy/ARDY-Core-RP-20FPS-Horizon40/stats/motion/mean.npy",
+      "bytes": 2800,
+      "sha256": "f04fd87f7b9ce3eab87159e3d4c408261d33e050ce98747de84ea76b0d18538b"
+    },
+    {
+      "path": "models/ardy/ARDY-Core-RP-20FPS-Horizon40/stats/motion/std.npy",
+      "bytes": 2800,
+      "sha256": "0da45d27a9b9f12d66eb5627c7d3920aef09863c4a931bc7fc44522bdbfe957a"
+    },
+    {
+      "path": "models/ardy/ARDY-Core-RP-20FPS-Horizon40/stats/post_quantization/mean.npy",
+      "bytes": 640,
+      "sha256": "408066cdfacd021a424ee2eb9dfc9501bfaf0b3136845864588e492148ac9923"
+    },
+    {
+      "path": "models/ardy/ARDY-Core-RP-20FPS-Horizon40/stats/post_quantization/std.npy",
+      "bytes": 640,
+      "sha256": "18786104a1aac8ef0998545afad51ab7e14fc73bddd0c3c736d2ba03342493ea"
+    },
+    {
+      "path": "models/ardy/ARDY-Core-RP-20FPS-Horizon40/stats/pre_quantization/mean.npy",
+      "bytes": 640,
+      "sha256": "e39c8c10cb32070d4dcdeffbc0161831bdced94bcebbecf49650534d0d8e6d7d"
+    },
+    {
+      "path": "models/ardy/ARDY-Core-RP-20FPS-Horizon40/stats/pre_quantization/std.npy",
+      "bytes": 640,
+      "sha256": "88201690e1d25c97b16a003387e4c2d7bf98b09528b4a3aa6ad460adfb32500e"
+    },
+    {
+      "path": "character-agent/data/models/alice.vrm",
+      "bytes": 16461368,
+      "sha256": "c5235bececa22337f40e73d58b969026e259376d88e62ef365e0b1bd6a65cfea"
+    },
+    {
+      "path": "character-agent/data/models/ikoma-miru.vrm",
+      "bytes": 19970476,
+      "sha256": "c4de99d9bc7fe44e01fd4b8441d58f21786b6265f3db394494d3facb3467ab17"
+    },
+    {
+      "path": "character-agent/data/models/miku-nt.vrm",
+      "bytes": 26306676,
+      "sha256": "f0ebcbdf5b2d4f86b123c63d4860ecf0e178e69b926c16ee01ec2f30c9d4e345"
+    },
+    {
+      "path": "character-agent/data/models/zome.vrm",
+      "bytes": 27407996,
+      "sha256": "848f99eb76e6e6fa3bed249b5e86be4e46e1d9a58a7b51ee1292d0d04dab6e52"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/cteg-license.txt",
+      "bytes": 1362,
+      "sha256": "eb9994b5ab5b91e519023aba5c937cb3b5032e5058129c056e9c23b25cfad4cd"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/cteg-model.chkpt",
+      "bytes": 605702094,
+      "sha256": "02510bd4405931e50c7dd8d52bea9727b660f8360a14e899cc1ec01f541328b1"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/bert-tokenizer/config.json",
+      "bytes": 570,
+      "sha256": "8b73abed2d67075fd3ec0f840aa53d9cccdc9169c04a7da135c07e721910ed74"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/bert-tokenizer/tokenizer_config.json",
+      "bytes": 49,
+      "sha256": "0f6d13e6f4da6f9e24f22ada6bc3be571123d858d7c0c05a8a7cd55a9c23c2e8"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/bert-tokenizer/vocab.txt",
+      "bytes": 213450,
+      "sha256": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/EmoAva/README.md",
+      "bytes": 7279,
+      "sha256": "43a4b4c48c8c401d50a9581f5340fda142ec12c0da83aa0f09f4f2fb66def3f7"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/EmoAva/dataset/stage1_mean.npy",
+      "bytes": 340,
+      "sha256": "3c361112a82813c2cb5b0a4765c9e93297b205817b11e4df0649611f20278845"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/EmoAva/src/data/generic_model.pkl",
+      "bytes": 53023716,
+      "sha256": "efcd14cc4a69f3a3d9af8ded80146b5b6b50df3bd74cf69108213b144eba725b"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/EmoAva/src/data/landmark_embedding.npy",
+      "bytes": 31292,
+      "sha256": "8095348eeafce5a02f6bd8765146307f9567a3f03b316d788a2e47336d667954"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/EmoAva/src/transformer/Constants.py",
+      "bytes": 79,
+      "sha256": "6a61e0ec2814a434d6b401d53cfcf0091eaa3a1aa382c3b5a60c6bf90aba9665"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/EmoAva/src/transformer/Layers.py",
+      "bytes": 6318,
+      "sha256": "0b7aa79655b68d03e8e7bd30542fa5d5a6a9a6617d7f3d2cb25ca960e734dddd"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/EmoAva/src/transformer/Models.py",
+      "bytes": 12773,
+      "sha256": "7a7dcec69c269bc846b0b923a024d55fa3efde7b940687d66cf953162924b6cd"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/EmoAva/src/transformer/Modules.py",
+      "bytes": 667,
+      "sha256": "a1ef105e55740110a2783b70e87f79b4a8be78d0aedc07beadb6dedc136a3f34"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/EmoAva/src/transformer/Optim.py",
+      "bytes": 1175,
+      "sha256": "b37b9338ad94a92d4b02e4f156881bcbad592e310ac6da2e00a432b77f722735"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/EmoAva/src/transformer/SubLayers.py",
+      "bytes": 2652,
+      "sha256": "b99e9600970aa198973650a06945d9a9748201b334b6c58061d17889c967d1dc"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/EmoAva/src/transformer/Translator.py",
+      "bytes": 5194,
+      "sha256": "c474803cd4cdfd22725592ca0ea5a2aef7a01bef70581525997420e0c3a94937"
+    },
+    {
+      "path": "character-agent/.cache/face-audit/EmoAva/src/transformer/__init__.py",
+      "bytes": 379,
+      "sha256": "db4c53a70f1eae86fd6220d6d38770022756364fb7db993ec3e92c1ab01a9972"
+    },
+    {
+      "path": "character-agent/.cache/TMR/LICENSE",
+      "bytes": 1092,
+      "sha256": "9c1ae9c185fc1db4d5eb95c2e1529ea4c788b66c240eb49a5b6a28825e07931b"
+    },
+    {
+      "path": "character-agent/.cache/TMR/README.md",
+      "bytes": 8622,
+      "sha256": "3fa5043e261bafac3562cdc4dbc8a5a62587b76c396a0ca8c033b167c6ed4b1c"
+    },
+    {
+      "path": "character-agent/.cache/TMR/models/tmr_humanml3d_guoh3dfeats/config.json",
+      "bytes": 3862,
+      "sha256": "37f696adbc6adcbf5d51e6dfdb0bd313a76e09b20ef9775e8d0929600dd96443"
+    },
+    {
+      "path": "character-agent/.cache/TMR/models/tmr_humanml3d_guoh3dfeats/last_weights/motion_encoder.pt",
+      "bytes": 19250463,
+      "sha256": "16805518259140d983753e7dd26bb6b0b16566977441fcf323bb60473a4894cc"
+    },
+    {
+      "path": "character-agent/.cache/TMR/models/tmr_humanml3d_guoh3dfeats/last_weights/text_encoder.pt",
+      "bytes": 19767429,
+      "sha256": "17615140d20bb991347ffbc0ead8fb1e8762afbb435bb23316a3de6ee6f7e43d"
+    },
+    {
+      "path": "character-agent/.cache/TMR/src/guofeats/motion_representation.py",
+      "bytes": 13738,
+      "sha256": "a12a9bac7e5e3523345ced74df00014593e3d41f7ed40cc52ff8c0c190dc6359"
+    },
+    {
+      "path": "character-agent/.cache/TMR/src/guofeats/paramUtil.py",
+      "bytes": 1786,
+      "sha256": "b2df69617191f790e7c614441b54428ab9e1b220d031b14de2ba825dc55fa81a"
+    },
+    {
+      "path": "character-agent/.cache/TMR/src/guofeats/skeleton_example_h3d.npy",
+      "bytes": 1376,
+      "sha256": "1135347d7cb6e974e3d8fa307597e4207672c37aba9b1cb6578e3d681e25975f"
+    },
+    {
+      "path": "character-agent/.cache/TMR/src/guofeats/__init__.py",
+      "bytes": 83,
+      "sha256": "8bced2fc835f02ad51f8b5e25c67dfb9b02a6b333f184975546980da498c47ff"
+    },
+    {
+      "path": "character-agent/.cache/TMR/src/guofeats/common/quaternion.py",
+      "bytes": 16577,
+      "sha256": "5cda26480236a0d307f3920d6b3d43ed3057a59e45e9bf6f89a51f27cf28197f"
+    },
+    {
+      "path": "character-agent/.cache/TMR/src/guofeats/common/skeleton.py",
+      "bytes": 9729,
+      "sha256": "9354cdf76af9515fc4c41cac1e42ba83a9d30bc7fbb6df842ee8e443753b7c68"
+    },
+    {
+      "path": "character-agent/.cache/TMR/src/model/actor.py",
+      "bytes": 4679,
+      "sha256": "fc599b13c8c5beb4f995f9048f60ec8e59b9a7583dee0ec2dc30ad5946928a0c"
+    },
+    {
+      "path": "character-agent/.cache/TMR/stats/humanml3d/guoh3dfeats/mean.pt",
+      "bytes": 1762,
+      "sha256": "04cd69a11591da2de1b338b98181ac431566c26ea529b121640c7269b3992127"
+    },
+    {
+      "path": "character-agent/.cache/TMR/stats/humanml3d/guoh3dfeats/std.pt",
+      "bytes": 1759,
+      "sha256": "12a8facff81c515f6f95d76a584f9e21d65c4d070d420706d79b6d0200bc1fae"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/config.json",
+      "bytes": 483,
+      "sha256": "69c94b0222d5d1f4b0ad027ca7416cdafb98378cbbb8305d0bf47c9365c60c83"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/model.safetensors",
+      "bytes": 267954768,
+      "sha256": "5e3f1108e3cb34ee048634875d8482665b65ac713291a7e32396fb18f6ff0063"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/tokenizer.json",
+      "bytes": 466062,
+      "sha256": "ce64fce797c24f68df90b40a3f74f579b336a493db14bd583fd520ea0d8c9a98"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/tokenizer_config.json",
+      "bytes": 48,
+      "sha256": "a025160ef0431f1a392f6f050c1310f4c5d9fb6f275932dbccba73c4d214bf10"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/vocab.txt",
+      "bytes": 231508,
+      "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/.cache/huggingface/.gitignore",
+      "bytes": 1,
+      "sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/.cache/huggingface/CACHEDIR.TAG",
+      "bytes": 195,
+      "sha256": "e8893e2dcb3f4545ef67a0a5b7b769113d38eef1aa61c7c7ba14659b02af955f"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/.cache/huggingface/download/config.json.metadata",
+      "bytes": 104,
+      "sha256": "9cdc7b25b138ff122ef4fac3288a909a15dfa8ba4b67f3be470ebcc50f30a3e7"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/.cache/huggingface/download/model.safetensors.metadata",
+      "bytes": 128,
+      "sha256": "09cd5bee9642700c8b11c90de2c8fb75520db78c8532238137afdd3110e210f1"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/.cache/huggingface/download/tokenizer.json.metadata",
+      "bytes": 104,
+      "sha256": "066fcfe9d21df16c69a4ccff68a8509a817de34a008b797bb58d204b9b3a8753"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/.cache/huggingface/download/tokenizer_config.json.metadata",
+      "bytes": 102,
+      "sha256": "b3e0ad41f7b24942017358cf0afadc4d558116291ea6f354f772844752c50679"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/.cache/huggingface/download/vocab.txt.metadata",
+      "bytes": 104,
+      "sha256": "3fc282d14b21a23d6ebceb5026be9039fdfa493baa8ed928f643322a3dd751f7"
+    },
+    {
+      "path": "character-agent/.cache/tmr-distilbert/.cache/huggingface/trees/12040accade4e8a0f71eabdb258fecc2e7e948be.json",
+      "bytes": 2307,
+      "sha256": "4f834202ac5368a5e09553be3d3b2d9fe45b0e23227275a661f4f772ea8ad0f7"
+    },
+    {
+      "path": "character-agent/.cache/ardy-engines/core40/decoder_tok14_fp16.trt",
+      "bytes": 71713092,
+      "sha256": "b858acc0106643262003566d9a6a11e71b684992239cc2657707ffd507c7f293"
+    },
+    {
+      "path": "character-agent/.cache/ardy-engines/core40/denoiser_tok14_fp16.trt",
+      "bytes": 345624556,
+      "sha256": "b912464a0d7416de0731c06d921b449be404e3792e92e06d4adbf86ec63ffae6"
+    },
+    {
+      "path": "character-agent/.cache/ardy-engines/core40/manifest.json",
+      "bytes": 230,
+      "sha256": "4f3dae4c1ddad30d7d0e6bda770623d2921f9ed253b53268e2805325043cd5aa"
+    },
+    {
+      "path": "runtime/tensorrt/nvinfer_10.dll",
+      "bytes": 434634272,
+      "sha256": "f6dc9200c8208ff8bfc1ae89b518f5b33fbf6d81f44e177827b2d1da0de12353"
+    },
+    {
+      "path": "runtime/tensorrt/nvinfer_lean_10.dll",
+      "bytes": 44379168,
+      "sha256": "44b7dc3717a7f2b2cff09b738e9498dcd4b3e1334b965fadcab010a9378a8c4b"
+    },
+    {
+      "path": "runtime/tensorrt/nvinfer_plugin_10.dll",
+      "bytes": 55116320,
+      "sha256": "473e97dc8b068a6c8127c7cce6b6b56ab3670dd45eb6482afec86c9ec4669adf"
+    },
+    {
+      "path": "runtime/tensorrt/nvonnxparser_10.dll",
+      "bytes": 3045408,
+      "sha256": "81d83c9c033f204eed8f5f0763241e2cef6b3137e1089d59bccabe04ef99c42a"
+    },
+    {
+      "path": "kimodo.cpp/build/cpu/kmd-encode-server.exe",
+      "bytes": 132096,
+      "sha256": "000789d4d64bbfd5d55be050eb76a17280e48bbe51a1be567bd9b3ad3a2f7648"
+    },
+    {
+      "path": "kimodo.cpp/build/cpu/bin/ggml-base.dll",
+      "bytes": 652288,
+      "sha256": "6605cdf780c8dad4cf1726b30d1ebd609446eecc52c3a2c389d3667035082ecf"
+    },
+    {
+      "path": "kimodo.cpp/build/cpu/bin/ggml-cpu.dll",
+      "bytes": 804864,
+      "sha256": "8604f2a6a9f88fe02163170db737c79a6760cc21a7964e7e06e98a7f79805364"
+    },
+    {
+      "path": "kimodo.cpp/build/cpu/bin/ggml.dll",
+      "bytes": 67072,
+      "sha256": "b3c487a75c47d78fbb54a57dcd002c59715cad4b31d60a149f5427f9b91bc7d2"
+    },
+    {
+      "path": "kimodo.cpp/Llama-3-Kimodo-Q4_K.gguf",
+      "bytes": 4389729536,
+      "sha256": "b47f3d57c72660df7faa18338749be945e725032f1db467fe3cabf580a80e012"
+    },
+    {
+      "path": "kimodo.cpp/tokenizer.gguf",
+      "bytes": 7295054,
+      "sha256": "81614aca62a98846c02b72cc2e5378e5bdce8b4d507b88f96eb1faa90dae607e"
+    }
+  ]
+}

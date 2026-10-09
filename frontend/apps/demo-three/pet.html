@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>小小伙伴 · 桌宠</title></head>
+<body><div id="pet-viewport"></div><div id="notice">正在连接 ARDY…</div>
+<nav id="toolbar" hidden aria-label="角色圆环菜单"><button id="chat" title="独立聊天窗口">聊</button><button id="settings" title="动作与配置">☰</button><button id="auto" title="开始 AI 自动规划">AI</button><button id="pause" title="停止运动并停止自动规划">■</button><button id="reset" title="清空旧动作并强制复原站立">↺</button><button id="big-head" title="全屏近景对话">全屏</button><button id="close" title="关闭桌宠">×</button></nav>
+<section id="panel" hidden><header id="panel-drag" title="按住标题拖动位置"><strong>动作与配置 · 拖动标题移动</strong><div><button id="panel-refresh" title="刷新桌宠和设置界面">↻</button><button id="panel-close" title="关闭设置">×</button></div></header>
+<details id="ai-controls"><summary>AI 接口（可选 · OpenAI 兼容）</summary>
+<p>聊天和 AI 自动规划需要接口；未配置时仍可使用手动动作与本地表情。</p>
+<label>接口地址（Base URL）<input id="ai-base-url" placeholder="https://供应商/v1"></label>
+<label>模型 ID<input id="ai-model" placeholder="供应商提供的模型名称"></label>
+<label>API Key<input id="ai-key" type="password" autocomplete="off" placeholder="留空保留已保存密钥；本地接口可不填"></label>
+<button id="ai-save">保存 AI 接口</button><button id="ai-disable">停用 AI 接口</button><p id="ai-status" aria-live="polite">未配置 AI 接口</p>
+</details>
+<details open id="generation-controls"><summary>动作生成配置与耗时</summary>
+<label>历史长度（帧，20fps）<input id="history-frames" type="number" min="0" max="160" step="4" value="16"></label>
+<p>4帧≈0.2秒，16帧≈0.8秒。历史越长，参考前一动作越多；不等于长期记忆。</p>
+<label>去噪步数<input id="denoising-steps" type="number" min="1" max="10" step="1" value="10"></label>
+<p>步数少通常更快，但动作质量需要对照；建议先试10、5、3。</p>
+<label>推理后端<select id="inference-backend"><option value="none">PyTorch</option><option value="trt-fp16">TensorRT FP16</option><option value="torch-compile">Torch Compile</option></select></label>
+<button id="apply-generation">应用生成参数</button><p id="generation-settings-status"></p>
+<label>动作文本编码<select id="text-encoder-mode"><option value="cpu">CPU</option><option value="vulkan-stream">Vulkan GPU 分块</option><option value="vulkan-resident">Vulkan GPU 全模型常驻</option></select></label>
+<label>GPU 分块层数<input id="text-encoder-chunk" type="number" min="1" max="8" step="1" value="2"></label>
+<p>分块适合显存有限的设备。全模型常驻还需要计算缓冲空间，空闲显存不足时自动改用分块；GPU 运行失败时回退 CPU。</p>
+<button id="text-encoder-save">保存文本编码方式</button><p id="text-encoder-status" aria-live="polite"></p>
+<p id="generation-timing">尚无生成耗时</p>
+</details>
+<label>角色<select id="model"></select></label><label>导入 VRM<input id="file" type="file" accept=".vrm"></label>
+<label>动作描述（英文不超过30词）<textarea id="prompt" rows="3">A person gently waves their right hand.</textarea></label>
+<button id="generate">生成并播放</button><div class="row"><button id="play">播放</button><button id="stop">停止</button></div>
+
+<label>预设动作<select id="preset"><option value="stand">站着</option><option value="sit">坐着</option><option value="look_user">看用户</option><option value="wave">挥手</option><option value="angry">生气（抱臂）</option><option value="stretch">伸懒腰</option><option value="exercise">运动一下</option><option value="lie">躺着</option><option value="idle">生成站立</option><option value="idle_stand">稳定站立循环</option><option value="idle_sit">稳定坐姿循环</option><option value="idle_kneel">稳定跪姿循环</option><option value="idle_lie">稳定躺姿循环</option><option value="look_around">左右张望</option></select></label>
+<label>手动动作参考时长（秒）<input id="action-duration" type="number" min="0.5" max="30" step="0.5" value="4"></label>
+<label>片段播放次数<input id="event-repeat" type="number" min="1" max="5" value="1"></label>
+<label>动作后待机<select id="after-idle"><option value="keep">保持当前待机类型</option><option value="stand">站着</option><option value="sit">坐着</option><option value="kneel">跪着</option><option value="lie">躺着</option><option value="hold">保持动作末姿态</option></select></label>
+<button id="preset-play">执行预设</button>
+<label>行为模式<select id="behavior-mode"><option value="stream">持续续生成</option><option value="event">阶段动作 + 静态保护</option><option value="hybrid">混合：交互时活跃，离开后待机</option></select></label>
+<label>混合模式：多久无交互后休息（分钟）<input id="inactive-minutes" type="number" min="1" max="180" value="30"></label>
+<label>阶段动作收尾续帧上限（秒）<input id="settle-buffer" type="number" min="2" max="20" value="6"></label>
+<label class="check"><input id="cached-idle-loops" type="checkbox">允许AI选择稳定待机循环（默认关闭，下次计划生效）</label>
+<label>模式二：静态姿势如何保持<select id="static-protection"><option value="freeze">停止ARDY，定格身体（不加微动）</option><option value="anchor">继续ARDY，但限制偏移</option><option value="off">关闭</option></select></label>
+<label>手动测试：动作结束后怎么动<select id="pose-intent"><option value="auto">自动识别（特殊姿势请选保持）</option><option value="static">保持姿势（举手保持、摆pose）</option><option value="dynamic">持续运动（走路、跑步、跳舞）</option></select></label>
+<label class="check"><input id="continuous" type="checkbox">不要推进下一步：一直保留这个动作任务（静态任务仍会定格）</label>
+<p>上方“静态姿势如何保持”选择保持方法；“动作结束后怎么动”和“不推进下一步”只用于手动测试，不控制聊天里的AI计划。选保持姿势后先完成动作并续帧收尾，再停止生成。
+模式二直接衔接当前动作，边播放边续帧；仅静态姿势启用保护，不切换预制待机。混合模式离开后减少自主规划请求。</p>
+<label class="check"><input id="body-avoidance" type="checkbox" checked>手臂避让身体（减少手臂穿入躯干，可关闭）</label>
+<label class="check"><input id="one-euro" type="checkbox" checked>One Euro 骨骼消抖（可关闭对照，不纠正姿态跑偏）</label>
+<label class="check"><input id="heading" type="checkbox" checked>稳定整体朝向（大幅动作时让出）</label>
+<label class="check"><input id="gaze" type="checkbox" checked>头部看向我（大幅动作时自动让出）</label>
+<label>角色缩放（35%–800%，大倍率为头部近景）<input id="scale" type="range" min="35" max="800" value="100"></label>
+<label>渲染亮度<input id="brightness" type="range" min="60" max="260" value="180" step="5"></label>
+<p>右击角色显示／收起圆环菜单；按住角色直接拖动；滚轮同时缩放角色和透明窗口。“聊”打开独立聊天窗口，“AI”开始或停止自动规划。</p><output id="status">等待模型就绪</output></section>
+<script type="module" src="/src/pet.ts"></script></body></html>
